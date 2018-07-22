@@ -24,9 +24,9 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action!", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
-        var task = Mytask()
+        var task = MyTask()
         task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,8000)
-        var task2 = Mytask()
+        var task2 = MyTask()
         task2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,3000)
     }
 
@@ -45,7 +45,9 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-    inner class Mytask : AsyncTask<Long,Void,String>(){
+
+    // example of inner class in kotlin
+    inner class MyTask : AsyncTask<Long,Void,String>(){
         override fun doInBackground(vararg params: Long?): String {
             params[0]?.let { Thread.sleep(it) }
             return params[0].toString()
